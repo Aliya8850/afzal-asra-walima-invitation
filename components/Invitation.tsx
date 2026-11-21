@@ -305,7 +305,7 @@ export default function Invitation() {
       <footer className="footer">
         <Divider className="footer-divider" />
         <span className="footer-names foil">Afzal &amp; Asra</span>
-        <span className="footer-date">13 13 December 2026</span>
+        <span className="footer-date">13 December 2026</span>
       </footer>
     </main>
   );
