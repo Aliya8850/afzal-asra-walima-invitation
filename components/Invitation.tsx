@@ -1,13 +1,13 @@
 import {
   BRIDE,
-  EVENTS,
   GROOM,
+  HOSTS,
+  INVITE_LINE,
   RSVP_WHATSAPP,
-  VARIANTS,
+  WALIMA,
   calendarUrl,
   mapsUrl,
   type EventInfo,
-  type VariantKey,
 } from "@/lib/events";
 import ClickBurst from "./ClickBurst";
 import Countdown from "./Countdown";
@@ -84,25 +84,21 @@ function EventCard({
   );
 }
 
-export default function Invitation({ variant }: { variant: VariantKey }) {
-  const v = VARIANTS[variant];
-  const events = v.events.map((id) => EVENTS[id]);
-  const first = events[0];
-  const last = events[events.length - 1];
-  const solo = events.length === 1;
-  const dateLine = solo
-    ? `${first.weekday}, ${first.day} ${first.month} ${first.year}`
-    : `${first.day} ${first.month.slice(0, 3)} — ${last.day} ${last.month.slice(0, 3)} ${last.year}`;
+export default function Invitation() {
+  const first = WALIMA;
+  const events = [WALIMA];
+  const solo = true;
+  const dateLine = `${first.weekday}, ${first.day} ${first.month} ${first.year}`;
 
   const rsvpHref = RSVP_WHATSAPP
     ? `https://wa.me/${RSVP_WHATSAPP}?text=${encodeURIComponent(
-        `Assalamu Alaikum! We will be joining the celebrations of ${GROOM.first} & ${BRIDE.first}, In shaa Allah.`,
+        `Assalamu Alaikum! We will be joining the Walima of ${GROOM.first} & ${BRIDE.first}, In shaa Allah.`,
       )}`
     : "";
 
   return (
     <main className="invite">
-      <Gate initials="M·A" />
+      <Gate initials="A·A" />
       <Music />
       <ClickBurst />
       <Spotlight />
@@ -173,7 +169,7 @@ export default function Invitation({ variant }: { variant: VariantKey }) {
               <br className="hidden sm:inline" />
               we cordially invite you to celebrate{" "}
               <br className="hidden sm:inline" />
-              {v.invite}
+              {INVITE_LINE}
             </p>
 
             <h1 className="names">
@@ -294,7 +290,7 @@ export default function Invitation({ variant }: { variant: VariantKey }) {
           </p>
           <Divider className="section-divider" />
           <p className="eyebrow">With best compliments from</p>
-          <p className="hosts">Shaikh Family, Relatives &amp; Friends</p>
+          <p className="hosts">{HOSTS}</p>
 
           {rsvpHref ? (
             <div className="closing-actions">
@@ -308,8 +304,8 @@ export default function Invitation({ variant }: { variant: VariantKey }) {
 
       <footer className="footer">
         <Divider className="footer-divider" />
-        <span className="footer-names foil">Mustafa &amp; Aliya</span>
-        <span className="footer-date">December 2026</span>
+        <span className="footer-names foil">Afzal &amp; Asra</span>
+        <span className="footer-date">13 13 December 2026</span>
       </footer>
     </main>
   );

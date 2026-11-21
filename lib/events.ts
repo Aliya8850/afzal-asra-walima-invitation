@@ -1,7 +1,5 @@
-export type EventId = "haldi" | "nikah" | "walima";
-
 export interface EventInfo {
-  id: EventId;
+  id: "walima";
   title: string;
   short: string;
   kicker: string;
@@ -10,7 +8,7 @@ export interface EventInfo {
   month: string;
   year: string;
   time: string;
-  /** Optional second line under the time, e.g. an exact clock time. */
+  /** Optional second line under the time. */
   timeExtra?: string;
   /** ISO timestamp (IST) used for the countdown. */
   startISO: string;
@@ -21,22 +19,24 @@ export interface EventInfo {
   /** Leave empty to hide the "Open in Maps" button. */
   mapQuery: string;
   note?: string;
-  accent: "haldi" | "nikah" | "walima";
+  accent: "walima";
 }
 
 export const GROOM = {
-  first: "Mustafa",
-  last: "Shaikh",
-  full: "Mustafa Shaikh",
-  parents: "S/o Mr. Umar Haroon Shaikh & Mrs. Umera Shaikh",
+  first: "Afzal",
+  last: "Khan",
+  full: "Mohd. Afzal Khan",
+  parents: "S/o. Sahebe Alam Khan",
 };
 
 export const BRIDE = {
-  first: "Aliya",
-  last: "Khan",
-  full: "Aliya Khan",
-  parents: "D/o Late Mr. Salim Khan & Mrs. Zohra Bi Khan",
+  first: "Asra",
+  last: "Chaudhari",
+  full: "Asra Chaudhari",
+  parents: "D/o. Haji Akeel Ahmed Chaudhari",
 };
+
+export const HOSTS = "Sahebe Alam Khan, Family, Relatives & Friends";
 
 /**
  * Optional: WhatsApp number (country code, digits only, e.g. "919876543210")
@@ -44,131 +44,30 @@ export const BRIDE = {
  */
 export const RSVP_WHATSAPP = "";
 
-export const EVENTS: Record<EventId, EventInfo> = {
-  // TODO: confirm the Haldi date (time and venue are confirmed).
-  haldi: {
-    id: "haldi",
-    title: "Haldi",
-    short: "Haldi",
-    kicker: "A Splash of Gold & Joy",
-    weekday: "Monday",
-    day: "30",
-    month: "November",
-    year: "2026",
-    time: "07:00 pm onwards",
-    startISO: "2026-11-30T19:00:00+05:30",
-    calStart: "20261130T190000",
-    calEnd: "20261130T230000",
-    venue: [
-      "Kannad Hall, 2-C-2, Sector-9A,",
-      "Near Vashi Bus Depot., Vashi,",
-      "Navi Mumbai.",
-    ],
-    mapQuery: "Kannad Hall, 2-C-2, Sector 9A, Near Vashi Bus Depot, Vashi, Navi Mumbai",
-    accent: "haldi",
-  },
-  nikah: {
-    id: "nikah",
-    title: "Nikah",
-    short: "Nikah",
-    kicker: "Inshallah",
-    weekday: "Wednesday",
-    day: "02",
-    month: "December",
-    year: "2026",
-    time: "After Namaz-e-Maghrib",
-    timeExtra: "07:00 pm onwards",
-    startISO: "2026-12-02T19:00:00+05:30",
-    calStart: "20261202T190000",
-    calEnd: "20261202T220000",
-    venue: [
-      "Malhar Hall, B-103, Municipal Rd,",
-      "Sector 2, Govandi East,",
-      "Mumbai - 400043.",
-    ],
-    mapQuery: "Malhar Hall, B-103, Municipal Rd, Sector 2, Govandi East, Mumbai 400043",
-    accent: "nikah",
-  },
-  walima: {
-    id: "walima",
-    title: "Dawat-e-Walima",
-    short: "Walima",
-    kicker: "The Reception",
-    weekday: "Friday",
-    day: "04",
-    month: "December",
-    year: "2026",
-    time: "07:00 pm onwards",
-    startISO: "2026-12-04T19:00:00+05:30",
-    calStart: "20261204T190000",
-    calEnd: "20261204T230000",
-    venue: [
-      "Palm Beach Banquets, 1st Floor, Vadar Bhavan,",
-      "Sanpada Rd, Palm Beach,",
-      "Navi Mumbai - 400705.",
-    ],
-    mapQuery: "Palm Beach Banquets, Vadar Bhavan, Sanpada Rd, Palm Beach, Navi Mumbai 400705",
-    accent: "walima",
-  },
+export const WALIMA: EventInfo = {
+  id: "walima",
+  title: "Dawat-e-Walima",
+  short: "Walima",
+  kicker: "Insha Allah · The Reception",
+  weekday: "Sunday",
+  day: "13",
+  month: "December",
+  year: "2026",
+  time: "08:00 pm to 11:30 pm",
+  startISO: "2026-12-13T20:00:00+05:30",
+  calStart: "20261213T200000",
+  calEnd: "20261213T233000",
+  venue: [
+    "Jogle Banquet Hall, 1st Floor Gents & 2nd Flr. Ladies,",
+    "Patel Paradise C.H.S. Ltd., Sector-35 E,",
+    "Owe Gaon, Kharghar, Navi Mumbai - 410 210.",
+  ],
+  mapQuery:
+    "Jogle Banquet Hall, Patel Paradise C.H.S. Ltd., Sector 35E, Owe Gaon, Kharghar, Navi Mumbai 410210",
+  accent: "walima",
 };
 
-export type VariantKey =
-  | "haldi-nikah-walima"
-  | "nikah-walima"
-  | "nikah"
-  | "walima";
-
-export interface Variant {
-  key: VariantKey;
-  path: string;
-  label: string;
-  description: string;
-  events: EventId[];
-  /** Completes "…invite you to celebrate ___ of our beloved son". */
-  invite: string;
-  intro: string;
-}
-
-export const VARIANTS: Record<VariantKey, Variant> = {
-  "haldi-nikah-walima": {
-    key: "haldi-nikah-walima",
-    path: "/haldi-nikah-walima",
-    label: "Haldi · Nikah · Walima",
-    description: "The complete celebration — all three days.",
-    events: ["haldi", "nikah", "walima"],
-    invite: "THE WEDDING CELEBRATIONS OF OUR BELOVED SON",
-    intro: "Three days of joy, duas and togetherness",
-  },
-  "nikah-walima": {
-    key: "nikah-walima",
-    path: "/nikah-walima",
-    label: "Nikah · Walima",
-    description: "The wedding and the reception.",
-    events: ["nikah", "walima"],
-    invite: "THE WEDDING & RECEPTION OF OUR BELOVED SON",
-    intro: "Two evenings to witness a blessed union",
-  },
-  nikah: {
-    key: "nikah",
-    path: "/nikah",
-    label: "Nikah only",
-    description: "The wedding ceremony.",
-    events: ["nikah"],
-    invite: "THE WEDDING OF OUR BELOVED SON",
-    intro: "Join us as two families become one",
-  },
-  walima: {
-    key: "walima",
-    path: "/walima",
-    label: "Dawat-e-Walima only",
-    description: "The reception dinner.",
-    events: ["walima"],
-    invite: "THE RECEPTION OF OUR BELOVED SON",
-    intro: "An evening of feasting and blessings",
-  },
-};
-
-export const VARIANT_LIST = Object.values(VARIANTS);
+export const INVITE_LINE = "THE WALIMA (RECEPTION) CEREMONY OF";
 
 export function mapsUrl(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
@@ -177,11 +76,11 @@ export function mapsUrl(query: string) {
 export function calendarUrl(e: EventInfo) {
   const params = new URLSearchParams({
     action: "TEMPLATE",
-    text: `${e.title} — Mustafa & Aliya`,
+    text: `${e.title} — ${GROOM.first} & ${BRIDE.first}`,
     dates: `${e.calStart}/${e.calEnd}`,
     ctz: "Asia/Kolkata",
     location: e.venue.join(" "),
-    details: "Wedding of Mustafa Shaikh & Aliya Khan. Your presence and blessings would make this occasion truly special.",
+    details: `Walima of ${GROOM.full} & ${BRIDE.full}. Your gracious presence will make our celebration even more special.`,
   });
   return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }

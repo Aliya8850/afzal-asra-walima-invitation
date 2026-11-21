@@ -40,9 +40,9 @@ const script = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Mustafa & Aliya | Wedding Invitation",
+  title: "Afzal & Asra | Dawat-e-Walima Invitation",
   description:
-    "With great joy & happiness we cordially invite you to celebrate the wedding of Mustafa Shaikh & Aliya Khan — December 2026.",
+    "With the blessings of Allah, we are delighted to invite you to the Walima of Mohd. Afzal Khan & Asra Chaudhari — Sunday, 13th December 2026.",
   robots: { index: false, follow: false },
 };
 

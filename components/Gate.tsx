@@ -30,7 +30,7 @@ export default function Gate({ initials }: { initials: string }) {
     <div
       className={`gate ${phase === "opening" ? "is-opening" : ""}`}
       role="dialog"
-      aria-label="Wedding invitation cover"
+      aria-label="Walima invitation cover"
     >
       <div className="gate-door gate-door-l">
         <i className="door-panel" />
@@ -49,12 +49,12 @@ export default function Gate({ initials }: { initials: string }) {
         >
           <WaxSeal initials={initials} />
         </button>
-        <p className="gate-names" aria-label="Mustafa and Aliya">
-          <span>Mustafa</span>
+        <p className="gate-names" aria-label="Afzal and Asra">
+          <span>Afzal</span>
           <span className="gate-amp" aria-hidden="true">
             &amp;
           </span>
-          <span>Aliya</span>
+          <span>Asra</span>
         </p>
         <p className="gate-hint">Tap the seal to open</p>
       </div>
