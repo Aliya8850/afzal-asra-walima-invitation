@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import {
   Amiri,
   Cinzel,
-  Great_Vibes,
+  Italianno,
   Lora,
   Scheherazade_New,
 } from "next/font/google";
@@ -33,7 +33,7 @@ const calligraphy = Scheherazade_New({
   weight: ["400", "700"],
 });
 
-const script = Great_Vibes({
+const script = Italianno({
   variable: "--font-script",
   subsets: ["latin"],
   weight: "400",
